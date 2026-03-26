@@ -59,45 +59,63 @@
     
     .page { display: none; }
     .page.active { display: block; }
+
+    /* Custom styles for the screenshots look */
+    .service-card-img {
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+    .symptoms-box {
+      background-color: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: 16px;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at 70% 30%, rgba(26, 79, 214, 0.15) 0%, transparent 70%),
+                  radial-gradient(circle at 30% 70%, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+    }
   </style>
 </head>
 <body class="bg-white text-[#0f1b35]">
 
   <!-- ─── NAVEGAÇÃO ─── -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0f1b35]/95 backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <button onclick="navigateTo('home')" class="flex items-center gap-2.5 text-lg font-bold text-white hover:opacity-90 transition-opacity">
-        <div class="w-9 h-9 bg-[#1a4fd6] rounded-lg flex items-center justify-center">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <button onclick="navigateTo('home')" class="flex items-center gap-3 text-xl font-bold text-[#0f1b35] hover:opacity-90 transition-opacity">
+        <div class="w-10 h-10 bg-[#0f1b35] rounded-full flex items-center justify-center border-2 border-slate-100">
           <i data-lucide="tv" class="w-5 h-5 text-white"></i>
         </div>
         Mestre das TVs
       </button>
 
-      <div class="hidden md:flex items-center gap-1">
-        <button onclick="navigateTo('home')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-white bg-white/10" data-page="home">Início</button>
-        <button onclick="navigateTo('services')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5" data-page="services">Serviços</button>
-        <button onclick="navigateTo('location')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5" data-page="location">Localização</button>
-        <button onclick="navigateTo('contact')" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5" data-page="contact">Contato</button>
+      <div class="hidden md:flex items-center gap-8">
+        <div class="flex items-center gap-6">
+          <button onclick="navigateTo('home')" class="nav-link text-sm font-medium text-slate-500 hover:text-[#1a4fd6] transition-colors" data-page="home">Início</button>
+          <button onclick="navigateTo('services')" class="nav-link text-sm font-medium text-slate-500 hover:text-[#1a4fd6] transition-colors" data-page="services">Serviços</button>
+          <button onclick="navigateTo('location')" class="nav-link text-sm font-medium text-slate-500 hover:text-[#1a4fd6] transition-colors" data-page="location">Localização</button>
+          <button onclick="navigateTo('contact')" class="nav-link text-sm font-medium text-slate-500 hover:text-[#1a4fd6] transition-colors" data-page="contact">Contato</button>
+        </div>
         
-        <a href="https://wa.me/5511961435941" target="_blank" class="ml-3 px-5 py-2 bg-[#22c55e] text-white rounded-radius font-semibold text-sm flex items-center gap-2 hover:bg-[#16a34a] transition-all shadow-lg">
+        <a href="https://wa.me/5511961435941" target="_blank" class="px-6 py-2.5 bg-[#22c55e] text-white rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#16a34a] transition-all shadow-md hover:shadow-lg active:scale-95">
           <i data-lucide="message-circle" class="w-4 h-4"></i>
-          WhatsApp
+          Solicitar Orçamento
         </a>
       </div>
 
-      <button class="md:hidden p-2 text-white" onclick="toggleMenu()">
+      <button class="md:hidden p-2 text-slate-600" onclick="toggleMenu()">
         <i data-lucide="menu" id="menu-icon"></i>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#0f1b35] border-t border-white/10 overflow-hidden">
-      <div class="px-6 py-4 flex flex-col gap-1">
-        <button onclick="navigateTo('home')" class="py-3 text-left text-white/80 font-medium border-b border-white/5">Início</button>
-        <button onclick="navigateTo('services')" class="py-3 text-left text-white/80 font-medium border-b border-white/5">Serviços</button>
-        <button onclick="navigateTo('location')" class="py-3 text-left text-white/80 font-medium border-b border-white/5">Localização</button>
-        <button onclick="navigateTo('contact')" class="py-3 text-left text-white/80 font-medium border-b border-white/5">Contato</button>
-        <a href="https://wa.me/5511961435941" target="_blank" class="mt-4 py-3 bg-[#22c55e] text-white rounded-radius font-semibold flex items-center justify-center gap-2">
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 overflow-hidden shadow-xl">
+      <div class="px-6 py-6 flex flex-col gap-4">
+        <button onclick="navigateTo('home')" class="text-left text-slate-600 font-semibold text-lg">Início</button>
+        <button onclick="navigateTo('services')" class="text-left text-slate-600 font-semibold text-lg">Serviços</button>
+        <button onclick="navigateTo('location')" class="text-left text-slate-600 font-semibold text-lg">Localização</button>
+        <button onclick="navigateTo('contact')" class="text-left text-slate-600 font-semibold text-lg">Contato</button>
+        <a href="https://wa.me/5511961435941" target="_blank" class="mt-4 py-4 bg-[#22c55e] text-white rounded-2xl font-bold flex items-center justify-center gap-2">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           Chamar no WhatsApp
         </a>
@@ -105,147 +123,87 @@
     </div>
   </nav>
 
-  <main class="pt-16">
+  <main class="pt-20">
     
     <!-- ════ PAGE: HOME ════ -->
     <div id="page-home" class="page active">
       <!-- Hero -->
-      <section class="relative min-h-[85vh] flex items-center bg-[#0f1b35] overflow-hidden">
-        <div class="absolute inset-0">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_70%_50%,rgba(26,79,214,0.22)_0%,transparent_70%)]"></div>
-          <div class="absolute inset-0 opacity-[0.04] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-        </div>
+      <section class="relative min-h-[90vh] flex items-center bg-[#0f1b35] overflow-hidden">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10 py-20">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-[#38bdf8] text-xs font-bold uppercase tracking-wider mb-8 fade-in">
-            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-            Assistência Técnica Especializada
-          </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 max-w-2xl leading-[1.1] fade-in">
-            A sua TV parou?<br />
-            <span class="bg-gradient-to-r from-[#38bdf8] to-[#3b82f6] bg-clip-text text-transparent">Nós resolvemos.</span>
-          </h1>
-          <p class="text-lg text-white/60 max-w-lg mb-10 leading-relaxed fade-in">
-            Conserto de TV em São Paulo com peças de qualidade, preço justo e garantia de 90 dias. Especialistas em TV que não liga, tela sem imagem e troca de LED.
-          </p>
-          <div class="flex flex-wrap gap-4 fade-in">
-            <a href="https://wa.me/5511961435941" target="_blank" class="px-6 py-3 bg-[#22c55e] text-white rounded-radius font-semibold flex items-center gap-2 hover:bg-[#16a34a] transition-all shadow-lg">
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-              Fazer Orçamento Agora
-            </a>
-            <button onclick="navigateTo('services')" class="px-6 py-3 bg-white/10 text-white border border-white/25 backdrop-blur-md rounded-radius font-semibold flex items-center gap-2 hover:bg-white/20 transition-all">
-              Ver Serviços
-              <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </button>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-400/20 text-[#38bdf8] text-[11px] font-bold uppercase tracking-widest mb-8 fade-in">
+              Assistência Técnica Especializada
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1.05] fade-in">
+              A sua TV parou?<br />
+              <span class="text-[#3b82f6]">Nós resolvemos.</span>
+            </h1>
+            <p class="text-xl text-white/50 max-w-lg mb-12 leading-relaxed fade-in">
+              Conserto de TV em São Paulo com peças originais, preço justo e garantia. Especialistas em TV que não liga, sem imagem ou com troca de LED.
+            </p>
+            <div class="flex flex-wrap gap-4 fade-in">
+              <a href="https://wa.me/5511961435941" target="_blank" class="px-8 py-4 bg-[#22c55e] text-white rounded-xl font-bold flex items-center gap-2 hover:bg-[#16a34a] transition-all shadow-xl hover:-translate-y-1">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                Fazer Orçamento Agora
+              </a>
+              <button onclick="navigateTo('services')" class="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-xl font-bold flex items-center gap-2 hover:bg-white/10 transition-all">
+                Ver Serviços
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
           </div>
           
-          <div class="flex flex-wrap gap-10 mt-16 pt-10 border-t border-white/10 fade-in">
-            <div>
-              <div class="text-3xl font-bold text-white">90<span class="text-[#38bdf8]">d</span></div>
-              <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Garantia total</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-white">2021</div>
-              <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">No mercado</div>
-            </div>
-            <div>
-              <div class="text-3xl font-bold text-white">100<span class="text-[#38bdf8]">%</span></div>
-              <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-semibold">Orçamento grátis</div>
-            </div>
+          <!-- Trust Cards Overlay -->
+          <div class="hidden lg:block relative fade-in">
+            <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
+            <img src="https://picsum.photos/seed/electronics/800/600" alt="Bancada Técnica" class="relative rounded-[32px] border border-white/10 shadow-2xl grayscale-[0.2]" referrerPolicy="no-referrer">
           </div>
         </div>
-      </section>
 
-      <!-- Trust Strip -->
-      <section class="py-12 bg-white border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="flex gap-4 fade-in">
-              <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-[#1a4fd6] shrink-0">
-                <i data-lucide="shield-check" class="w-5 h-5"></i>
+        <!-- Trust Indicators Strip -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 py-8">
+          <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="flex items-start gap-4 fade-in">
+                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] shrink-0">
+                  <i data-lucide="file-text" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-900">Orçamento Grátis</h4>
+                  <p class="text-xs text-slate-500 mt-1">Diagnóstico e orçamento 100% gratuito, sem compromisso.</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-bold text-sm mb-1">Garantia de 90 Dias</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Todos os serviços possuem garantia de 3 meses para sua tranquilidade.</p>
+              <div class="flex items-start gap-4 fade-in">
+                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] shrink-0">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-900">Garantia de 90 Dias</h4>
+                  <p class="text-xs text-slate-500 mt-1">Todos os serviços possuem garantia total de 3 meses.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 fade-in">
+                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] shrink-0">
+                  <i data-lucide="clock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-900">Atendimento Rápido</h4>
+                  <p class="text-xs text-slate-500 mt-1">Avaliação ágil. Diagnóstico rápido e prazo de entrega informado.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 fade-in">
+                <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] shrink-0">
+                  <i data-lucide="star" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-sm text-slate-900">Técnico Especializado</h4>
+                  <p class="text-xs text-slate-500 mt-1">Ícaro Mendes, especialista em eletrônica desde 2021.</p>
+                </div>
               </div>
             </div>
-            <div class="flex gap-4 fade-in">
-              <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-[#1a4fd6] shrink-0">
-                <i data-lucide="file-text" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-sm mb-1">Orçamento Grátis</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Diagnóstico sem custo. Resposta rápida pelo WhatsApp sem compromisso.</p>
-              </div>
-            </div>
-            <div class="flex gap-4 fade-in">
-              <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-[#1a4fd6] shrink-0">
-                <i data-lucide="clock" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-sm mb-1">Atendimento Rápido</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Diagnóstico ágil com prazo de entrega informado no orçamento.</p>
-              </div>
-            </div>
-            <div class="flex gap-4 fade-in">
-              <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center text-[#1a4fd6] shrink-0">
-                <i data-lucide="star" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h3 class="font-bold text-sm mb-1">Técnico Especializado</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Ícaro Mendes, especialista em eletrônica com experiência desde 2021.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Services Overview -->
-      <section class="py-24 bg-[#f4f7fc]">
-        <div class="max-w-7xl mx-auto px-6">
-          <div class="text-center max-w-2xl mx-auto mb-16 fade-in">
-            <span class="inline-block px-3 py-1 rounded-full bg-blue-100 text-[#1a4fd6] text-[11px] font-bold uppercase tracking-widest mb-4">O que fazemos</span>
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Nossas Especialidades</h2>
-            <p class="text-slate-500">Resolvemos os problemas mais comuns das Smart TVs modernas com agilidade e transparência.</p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white border border-slate-200 rounded-radius p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group fade-in">
-              <div class="w-12 h-12 bg-[#f4f7fc] rounded-xl flex items-center justify-center text-[#1a4fd6] mb-6 transition-colors group-hover:bg-[#1a4fd6] group-hover:text-white">
-                <i data-lucide="zap" class="w-6 h-6"></i>
-              </div>
-              <h3 class="text-lg font-bold mb-3">Troca de LED</h3>
-              <p class="text-sm text-slate-500 leading-relaxed mb-6">Tela preta com som? Substituímos o barramento de LEDs com peças de qualidade e garantia de 90 dias.</p>
-              <button onclick="navigateTo('services')" class="text-sm font-bold text-[#1a4fd6] inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Saber mais <i data-lucide="chevron-right" class="w-4 h-4"></i>
-              </button>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-radius p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group fade-in">
-              <div class="w-12 h-12 bg-[#f4f7fc] rounded-xl flex items-center justify-center text-[#1a4fd6] mb-6 transition-colors group-hover:bg-[#1a4fd6] group-hover:text-white">
-                <i data-lucide="cpu" class="w-6 h-6"></i>
-              </div>
-              <h3 class="text-lg font-bold mb-3">Conserto de Placas</h3>
-              <p class="text-sm text-slate-500 leading-relaxed mb-6">Reparo a nível de componente na placa principal. TV travada, tela azul ou sem resposta ao controle.</p>
-              <button onclick="navigateTo('services')" class="text-sm font-bold text-[#1a4fd6] inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Saber mais <i data-lucide="chevron-right" class="w-4 h-4"></i>
-              </button>
-            </div>
-            <div class="bg-white border border-slate-200 rounded-radius p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group fade-in">
-              <div class="w-12 h-12 bg-[#f4f7fc] rounded-xl flex items-center justify-center text-[#1a4fd6] mb-6 transition-colors group-hover:bg-[#1a4fd6] group-hover:text-white">
-                <i data-lucide="power" class="w-6 h-6"></i>
-              </div>
-              <h3 class="text-lg font-bold mb-3">Fonte de TV</h3>
-              <p class="text-sm text-slate-500 leading-relaxed mb-6">TV que não liga, LED não acende ou cheiro de queimado. Reparo ou troca da placa fonte.</p>
-              <button onclick="navigateTo('services')" class="text-sm font-bold text-[#1a4fd6] inline-flex items-center gap-1 hover:gap-2 transition-all">
-                Saber mais <i data-lucide="chevron-right" class="w-4 h-4"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="text-center mt-12 fade-in">
-            <button onclick="navigateTo('services')" class="px-8 py-3 bg-[#1a4fd6] text-white rounded-radius font-semibold hover:bg-[#1541b5] transition-all shadow-lg">
-              Ver todos os serviços detalhados
-            </button>
           </div>
         </div>
       </section>
@@ -253,46 +211,156 @@
 
     <!-- ════ PAGE: SERVICES ════ -->
     <div id="page-services" class="page">
-      <section class="bg-[#0f1b35] py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_50%,rgba(26,79,214,0.22),transparent_70%)]"></div>
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-          <span class="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-[#38bdf8] text-[11px] font-bold uppercase tracking-widest mb-6">O que fazemos</span>
-          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Nossos Serviços</h1>
-          <p class="text-lg text-white/60 max-w-xl leading-relaxed">Diagnóstico preciso e reparo especializado para todos os modelos de Smart TVs. Transparência do orçamento à entrega.</p>
+      <!-- Green Banner -->
+      <div class="bg-[#22c55e] py-3">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-4">
+          <p class="text-white font-bold text-sm flex items-center gap-2">
+            <i data-lucide="gift" class="w-4 h-4"></i>
+            Orçamento Grátis pelo WhatsApp — resposta rápida!
+          </p>
+          <a href="https://wa.me/5511961435941" target="_blank" class="px-4 py-1 bg-white text-[#22c55e] rounded-full text-xs font-bold hover:bg-slate-50 transition-colors">
+            Solicitar Agora
+          </a>
         </div>
-      </section>
+      </div>
 
-      <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-          <div class="space-y-8">
-            <div class="bg-white border border-slate-200 rounded-radius p-8 md:p-12 grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-10 items-start shadow-sm fade-in">
-              <div class="text-center lg:text-left">
-                <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center text-[#1a4fd6] mx-auto lg:mx-0 mb-4">
-                  <i data-lucide="zap" class="w-10 h-10"></i>
-                </div>
-                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-green-700 border border-green-200 text-[11px] font-bold">
-                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-                  90 dias de garantia
+      <!-- Services List -->
+      <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 space-y-32">
+          
+          <!-- Service 1: LED -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+            <div class="order-2 lg:order-1">
+              <img src="https://picsum.photos/seed/led-repair/800/500" alt="Troca de LED" class="service-card-img shadow-2xl">
+            </div>
+            <div class="order-1 lg:order-2">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] mb-6">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <span class="text-[11px] font-bold text-[#1a4fd6] uppercase tracking-widest mb-2 block">Tela Apagada? A gente resolve.</span>
+              <h2 class="text-3xl font-extrabold mb-6">Troca de LED / Backlight</h2>
+              <p class="text-slate-500 leading-relaxed mb-8">
+                O barramento de LEDs é responsável pela iluminação da tela. Com o tempo, os LEDs queimam e a TV perde totalmente a imagem — mas ainda funciona. Fazemos a substituição completa com kit de LEDs de qualidade e sem gambiarra.
+              </p>
+              
+              <div class="symptoms-box p-6 mb-8">
+                <h4 class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                  Sintomas Comuns:
+                </h4>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> TV tem som mas a tela fica preta</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Manchas claras (tipo farol) na tela</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Imagem aparece brevemente ao acender, depois apaga</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Metade da tela mais escura que a outra</li>
+                </ul>
+              </div>
+
+              <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-6 mb-8">
+                <div class="flex gap-4">
+                  <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-[#1a4fd6] shrink-0 shadow-sm">
+                    <i data-lucide="video" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-slate-900">Transparência Total — Enviamos um Vídeo</h4>
+                    <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                      Durante a troca do LED, <strong>gravamos e enviamos um vídeo para você pelo WhatsApp</strong> mostrando exatamente o que está sendo feito na sua TV. Você acompanha o processo do início ao fim.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div>
-                <h2 class="text-2xl font-extrabold mb-4">Troca de LED (Backlight)</h2>
-                <p class="text-slate-600 leading-relaxed mb-4">A retroiluminação LED é o componente mais sensível das TVs modernas. Quando uma ou mais tiras de LED falham, o resultado é uma tela completamente escura — mesmo que o som continue funcionando. Nosso serviço substitui o barramento completo de LEDs com peças de qualidade compatível com o fabricante original.</p>
-                <div class="flex flex-wrap gap-2 mt-6">
-                  <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-xs text-slate-500 font-medium">Tela preta com som</span>
-                  <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-xs text-slate-500 font-medium">Imagem escura com lanterna</span>
-                  <span class="px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-xs text-slate-500 font-medium">Brilho irregular</span>
-                </div>
+
+              <div class="flex items-center gap-6">
+                <a href="https://wa.me/5511961435941" target="_blank" class="px-6 py-3 bg-[#22c55e] text-white rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#16a34a] transition-all">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  Orçamento Grátis
+                </a>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i>
+                  Garantia de 90 dias
+                </span>
               </div>
             </div>
-            <!-- Outros serviços seguem o mesmo padrão... -->
           </div>
-          <div class="mt-16 text-center">
-            <a href="https://wa.me/5511961435941" target="_blank" class="px-10 py-4 bg-[#22c55e] text-white rounded-radius font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#16a34a] transition-all shadow-lg mx-auto w-fit">
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-              Pedir Orçamento Grátis pelo WhatsApp
-            </a>
+
+          <!-- Service 2: Placas -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+            <div>
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] mb-6">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </div>
+              <span class="text-[11px] font-bold text-[#1a4fd6] uppercase tracking-widest mb-2 block">Diagnóstico preciso, reparo garantido.</span>
+              <h2 class="text-3xl font-extrabold mb-6">Conserto de Placas</h2>
+              <p class="text-slate-500 leading-relaxed mb-8">
+                A placa principal (Main Board) é o cérebro da TV. Quando ela falha, a TV pode apresentar sintomas variados: tela azul, sem resposta ao controle, loop de reinicialização ou apenas o LED piscando. Fazemos reparo a nível de componente.
+              </p>
+              
+              <div class="symptoms-box p-6 mb-8">
+                <h4 class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                  Sintomas Comuns:
+                </h4>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> TV não responde ao controle remoto</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Tela azul fixa sem imagem</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> TV reinicia sozinha em loop</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Botões da TV não funcionam</li>
+                </ul>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <a href="https://wa.me/5511961435941" target="_blank" class="px-6 py-3 bg-[#22c55e] text-white rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#16a34a] transition-all">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  Orçamento Grátis
+                </a>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i>
+                  Reparo Eletrônico
+                </span>
+              </div>
+            </div>
+            <div>
+              <img src="https://picsum.photos/seed/board-repair/800/500" alt="Conserto de Placa" class="service-card-img shadow-2xl">
+            </div>
           </div>
+
+          <!-- Service 3: Fonte -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in">
+            <div class="order-2 lg:order-1">
+              <img src="https://picsum.photos/seed/power-supply/800/500" alt="Fonte de TV" class="service-card-img shadow-2xl">
+            </div>
+            <div class="order-1 lg:order-2">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-[#1a4fd6] mb-6">
+                <i data-lucide="power" class="w-5 h-5"></i>
+              </div>
+              <span class="text-[11px] font-bold text-[#1a4fd6] uppercase tracking-widest mb-2 block">TV que não liga? Pode ser a fonte.</span>
+              <h2 class="text-3xl font-extrabold mb-6">Fonte de TV</h2>
+              <p class="text-slate-500 leading-relaxed mb-8">
+                A placa fonte (Power Supply) converte a energia da tomada para os componentes da TV. É um dos itens que mais sofrem com picos de energia e raios. Trabalhamos com reparo ou substituição.
+              </p>
+              
+              <div class="symptoms-box p-6 mb-8">
+                <h4 class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-4 flex items-center gap-2">
+                  <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                  Sintomas Comuns:
+                </h4>
+                <ul class="space-y-2 text-sm text-slate-600 font-medium">
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> TV não liga de jeito nenhum</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> LED de standby não acende</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> Estouro ou cheiro de queimado</li>
+                  <li class="flex items-center gap-2"><div class="w-1 h-1 bg-blue-400 rounded-full"></div> TV liga mas desliga imediatamente</li>
+                </ul>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <a href="https://wa.me/5511961435941" target="_blank" class="px-6 py-3 bg-[#22c55e] text-white rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#16a34a] transition-all">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  Orçamento Grátis
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
